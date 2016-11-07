@@ -1,0 +1,2 @@
+INFO	?	main	2016-11-07T00:47:41.573Z	org.javacs.Main#connectToNode	Connected to parent using socket on port 55282
+INFO	?	main	2016-11-07T01:14:11.252Z	org.javacs.Main#run	Connection closed
