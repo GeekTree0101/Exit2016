@@ -15,11 +15,20 @@ public class subserver extends AbstractVerticle{
 
 		System.out.println("[+] start server");
 		EventBus eb = vertx.eventBus();
+		int count = 0;
+
 
 		eb.consumer("miro", message -> {
 
+			if(count > 2){
+				count = 0;
+			}
+			
+			String rp[3] = {"hello world", "MIRO", "awesome vertx"};
+
 			System.out.println("[+] recv from main server : " + message.body());
-			message.reply("Haoa!");
+			message.reply(rp[count]);
+			count++;
 		});
 		
 

@@ -17,8 +17,9 @@ public class server extends AbstractVerticle{
 
 		System.out.println("[+] start server");
 
-		
-		vertx.setPeriodic(1000, id -> {     //Timer
+		String text = "Vertx server ";
+
+		vertx.setPeriodic(5000, id -> {     //Timer
 
 			System.out.println("[+] sent event");
 
@@ -26,6 +27,7 @@ public class server extends AbstractVerticle{
 
 				if(reply.succeeded()) {
 					System.out.println("[+] Recv reply : " + reply.result().body());
+					text = reply.result().body();
 				}
 				else{
 					System.out.println("[-] No reply");
@@ -37,7 +39,7 @@ public class server extends AbstractVerticle{
 		vertx.createHttpServer().requestHandler(req -> {
 
 
-			String html = "<html><head></head><body><h1> Hello Vert.X </h1><p> This is vert.x server application </p></body></html>";
+			String html = "<html><head></head><body><h1>" + text + "</h1><p> This is vert.x server application </p></body></html>";
 
 			System.out.println("[+] user request");
 
