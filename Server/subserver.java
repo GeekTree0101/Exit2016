@@ -7,24 +7,20 @@ import io.vertx.core.eventbus.EventBus;
 
 public class subserver extends AbstractVerticle{
 
-    final int poolSize = 10;
-    final long maxExecuteTime = 30000;
-	int time = 0;
-
+    int count = 0;
+	
 	public void start(){
 
 		System.out.println("[+] start server");
 		EventBus eb = vertx.eventBus();
-		int count = 0;
-
 
 		eb.consumer("miro", message -> {
 
 			if(count > 2){
 				count = 0;
 			}
-			
-			String rp[3] = {"hello world", "MIRO", "awesome vertx"};
+
+			String rp[] = {"hello world", "MIRO", "awesome vertx"};
 
 			System.out.println("[+] recv from main server : " + message.body());
 			message.reply(rp[count]);

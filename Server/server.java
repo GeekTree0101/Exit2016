@@ -7,17 +7,15 @@ import io.vertx.core.eventbus.EventBus;
 
 public class server extends AbstractVerticle{
 
-    final int poolSize = 10;
-    final long maxExecuteTime = 30000;
-	int time = 0;
-
+	String text = "Vertx server ";
+	
 	public void start(){
 
 		EventBus eb = vertx.eventBus();
 
 		System.out.println("[+] start server");
 
-		String text = "Vertx server ";
+		
 
 		vertx.setPeriodic(5000, id -> {     //Timer
 
@@ -27,7 +25,7 @@ public class server extends AbstractVerticle{
 
 				if(reply.succeeded()) {
 					System.out.println("[+] Recv reply : " + reply.result().body());
-					text = reply.result().body();
+					text = (String)reply.result().body();
 				}
 				else{
 					System.out.println("[-] No reply");
