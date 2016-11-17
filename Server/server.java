@@ -1,25 +1,51 @@
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
 import java.io.*;
 import java.util.*;
+import io.vertx.core.WorkerExecutor;
+import io.vertx.core.eventbus.EventBus;
+
 
 public class server extends AbstractVerticle{
 
-	private Logger logger = LoggerFactory.getLogger(getClass());	
+    final int poolSize = 10;
+    final long maxExecuteTime = 30000;
+	int time = 0;
 
 	public void start(){
 
-		logger.info("[+] start server");
+		EventBus eb = vertx.eventBus();
+
+		System.out.println("[+] start server");
+
+		
+		vertx.setPeriodic(1000, id -> {     //Timer
+
+			System.out.println("[+] sent event");
+
+			eb.send("miro", "Hey sub server!", reply -> {
+
+				if(reply.succeeded()) {
+					System.out.println("[+] Recv reply : " + reply.result().body());
+				}
+				else{
+					System.out.println("[-] No reply");
+				}
+			});
+		});
+		
 
 		vertx.createHttpServer().requestHandler(req -> {
 
 
-			logger.info("[+] user request");
-			logger.info(req);
+			String html = "<html><head></head><body><h1> Hello Vert.X </h1><p> This is vert.x server application </p></body></html>";
+
+			System.out.println("[+] user request");
+
 			req.response()
-			   .putHeader("content-type", "text/plain")
-			   .end("hello world hello miro");
+			   .putHeader("content-type", "text/html")
+			   .end(html);
+
+
 		}).listen(9000);
 	}
 }
