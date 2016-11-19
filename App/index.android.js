@@ -3,18 +3,18 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 
-import Home from './app/page/home/home';
-
+import Nav from './app/page/Nav/Nav';
 
 class App extends Component{
 
     render(){
 
       return(
-        <Home/>
+        <Nav />
       );
     }
 }

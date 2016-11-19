@@ -6,7 +6,8 @@ import {
 
 import text from './../../stylesheet/text';
 
-class List extends Component {
+
+export default class List extends Component {
 
     render(){
 
@@ -15,5 +16,3 @@ class List extends Component {
         );
     }
 }
-
-module.exports = List;

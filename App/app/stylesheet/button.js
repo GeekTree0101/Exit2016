@@ -4,7 +4,7 @@ const button = StyleSheet.create({
 
     buttonColor: {
         color: '#555',
-        backgroundColor: 'FECEA8'
+        backgroundColor: '#FECEA8'
 
     },
     largeButton: {

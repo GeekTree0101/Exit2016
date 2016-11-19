@@ -14,7 +14,7 @@ const text = StyleSheet.create({
 
     article: {
         color: '#e3e3e3',
-        fontSize: 10
+        fontSize: 20
     }
 
 })
