@@ -1,0 +1,56 @@
+<!DOCTYPE />
+<html>
+
+<head>
+    <title> socket </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/jquery-ui-git.css">
+
+    <script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+    <script src="/main/js/vertx-eventbus.js"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/jquery-ui-git.js"></script>
+</head>
+
+<body>
+
+    <center>
+        <h1> Socket Test </h1>
+        <hr/>
+        <h2 id="chat"> socket test value : </h2>
+        <button id="event" style="width : 100%; background-color : #44A5C6; 
+        color : #fff; height : 50px"> Send </button>
+    </center>
+    <script>
+        var sock = new SockJS('http://192.168.1.9:8000/eventbus');
+
+        var data = ["hello world", "Vert.X is good", "awesome technic"];
+        var count = 0;
+
+        var eb = new EventBus("/eventbus/");
+
+        eb.onopen = function() {
+
+            eb.registerHandler("chat.to.client", function(err, msg) {
+
+                console.log("[+] recv : " + msg.body);
+                $('#chat').html("socket test value : " + msg.body);
+            });
+        };
+
+
+        $('#event').click(function() {
+
+            if (count == data.length) {
+                count = 0;
+            }
+
+            console.log("[+] send data", data[count]);
+            eb.publish("chat.to.server", data[count]);
+            count++;
+        });
+    </script>
+</body>
+
+</html>
