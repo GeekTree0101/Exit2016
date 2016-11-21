@@ -42,7 +42,7 @@ public class server extends AbstractVerticle{
         * Setting Router
         * : /URL_NAME . append handler
         */
-        router.route().handler(StaticHandler.create().setWebRoot("./www"));
+        router.route("/main/*").handler(StaticHandler.create().setWebRoot("./www"));
         router.route("/eventbus/*").handler(ebHandler);                          
 
         /*

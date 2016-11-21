@@ -46,6 +46,6 @@ public class socket extends AbstractVerticle{
            eb.publish("chat.to.client", "OK! " + message.body()); // 서버 -> 클라이언트
        });
     
-        vertx.createHttpServer().requestHandler(router::accept).listen(8000, "192.168.1.9");
+        vertx.createHttpServer().requestHandler(router::accept).listen(9000, "192.168.1.9");
     }
 }
