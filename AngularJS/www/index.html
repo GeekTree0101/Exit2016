@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="/main/css/styles.css">
     <!-- 1. Load libraries -->
     <!-- Polyfill for older browsers -->
+    <!-- SockJS Libraries -->
     <script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
-    <script src="/main//ext/vertx-eventbus.js"></script>
+    <script src="/main/js/vertx-eventbus.js"></script>
+    <!-- Angular Libraries -->
     <script src="/main/node_modules/core-js/client/shim.min.js"></script>
     <script src="/main/node_modules/zone.js/dist/zone.js"></script>
     <script src="/main/node_modules/reflect-metadata/Reflect.js"></script>
@@ -18,7 +20,8 @@
     <script src="/main/systemjs.config.js"></script>
     <script>
         System.import('app').catch(function(err) {
-            console.error(err);
+            //BUG :(SystemJS) AMD module http://localhost:8000/main/js/app.bundle.js did not define
+            //console.error(err);
         });
     </script>
 </head>

@@ -16,7 +16,7 @@ import java.util.*;
 
 public class server extends AbstractVerticle{
 
-    String IP_address = "192.168.1.9";
+    String IP_address = "localhost"; //"192.168.1.9";
     int Port_number = 8000;
 
     public void start(){
@@ -46,7 +46,7 @@ public class server extends AbstractVerticle{
         router.route("/eventbus/*").handler(ebHandler);                          
 
         /*
-        * Serring Socket
+        * Setting Socket
         * [33 line] ref : Bridge option
         */
         eb.consumer("main.server").handler(message -> {       
