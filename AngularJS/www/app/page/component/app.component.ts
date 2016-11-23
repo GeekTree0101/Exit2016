@@ -1,7 +1,7 @@
 import { Component, AfterContentInit } from '@angular/core';
 @Component({
   selector: 'my-app',
-  templateUrl : './main/app/template/app.component.html'
+  templateUrl : './main/template/app.component.html'
 })
 export class AppComponent {
 

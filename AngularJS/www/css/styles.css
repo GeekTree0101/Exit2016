@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  background-color: #F7B679; }
+
+header {
+  position: fixed;
+  width: 100%;
+  max-width: 100%;
+  height: 10%;
+  background-color: #61305D;
+  text-align: center; }
+  header .title {
+    position: relative;
+    color: #eee;
+    margin-top: 2vmax;
+    font-size: 5vmax;
+    font-weight: 700; }
+
+.group {
+  position: fixed;
+  margin-top: 30vmax;
+  text-align: center; }
+
+button {
+  position: relative;
+  width: 45vmax;
+  height: 15vmax;
+  color: #eee;
+  font-size: 4vmax;
+  font-weight: 700;
+  border: 0;
+  margin-top: 5vmax;
+  outline: none; }
+
+.visit {
+  background-color: #E77C7C; }
+
+.visit:active {
+  animation-name: ani;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-direction: forward; }
+
+.makeroom {
+  background-color: #B55C6C; }
+
+.makeroom:active {
+  animation-name: ani;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-direction: forward; }
+
+@keyframes ani {
+  0% {
+    border-radius: 0%;
+    opacity: 1; }
+  50% {
+    border-radius: 50%;
+    opacity: 0.5; }
+  100% {
+    border-radius: 0%;
+    opacity: 1; } }

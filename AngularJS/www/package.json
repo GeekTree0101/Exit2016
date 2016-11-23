@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "scripts": {
         "tsc": "tsc",
-        "tsc:w": "tsc -w"
+        "tsc:w": "tsc -w",
+        "application": "gulp AV:start"
     },
     "licenses": [{
         "type": "MIT",

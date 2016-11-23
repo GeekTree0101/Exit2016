@@ -23,35 +23,40 @@ header {
     position: fixed;
     margin-top: 30vmax;
     text-align: center;
-    button {
-        position: relative;
-        width: 45vmax;
-        height: 15vmax;
-        color: #eee;
-        font-size: 4vmax;
-        font-weight: 700;
-        border: 0;
-        margin-top: 5vmax;
-        outline: none;
-        .visit {
-            background-color: #E77C7C;
-        }
-        .visit:active {
-            animation-name: ani;
-            animation-duration: 0.5s;
-            animation-iteration-count: 1;
-            animation-direction: forward;
-        }
-        .makeroom {
-            background-color: #B55C6C;
-        }
-        .makeroom:active {
-            animation-name: ani;
-            animation-duration: 0.5s;
-            animation-iteration-count: 1;
-            animation-direction: forward;
-        }
-    }
+}
+
+button {
+    position: relative;
+    width: 45vmax;
+    height: 15vmax;
+    color: #eee;
+    font-size: 4vmax;
+    font-weight: 700;
+    border: 0;
+    margin-top: 5vmax;
+    outline: none;
+}
+
+.visit {
+    background-color: #E77C7C;
+}
+
+.visit:active {
+    animation-name: ani;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-direction: forward;
+}
+
+.makeroom {
+    background-color: #B55C6C;
+}
+
+.makeroom:active {
+    animation-name: ani;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-direction: forward;
 }
 
 @keyframes ani {

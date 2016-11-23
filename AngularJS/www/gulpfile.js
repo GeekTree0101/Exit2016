@@ -39,7 +39,7 @@ gulp.task("watch", function() {
 
 gulp.task("AV:start", function() { //App start
 
-    return runSequence(["AV:view", "AV:build"]);
+    return runSequence(["AV:view", "AV:build"], ["watch"]);
 
 });
 
