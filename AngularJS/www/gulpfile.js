@@ -17,11 +17,11 @@
 var gulp = require("gulp"),
     sassBuilder = require("gulp-sass"),
     run = require("gulp-exec"),
-    jade = require("gulp-jade"),
+    jadeBuild = require('gulp-jade'),
     runSequence = require("run-sequence"),
     watch = require("gulp-watch"),
-    remove = require("del");
-
+    remove = require("del"),
+    flatten = require("gulp-flatten");
 /**
  *   Watch Task Section
  */
@@ -30,7 +30,7 @@ gulp.task("watch", function() {
 
     gulp.watch(["./app/**/*.ts"], ["AV:build"]);
     gulp.watch(["./app/**/*.scss"], ["AV:view"]);
-
+    gulp.watch(["./app/**/*.jade"], ["AV:view"]);
 })
 
 /**
@@ -56,7 +56,7 @@ gulp.task("AV:build", function() { // Gulp Module for ReactJS
 
 gulp.task("AV:view", function() { // Gulp Module for AngularJS2
 
-    return runSequence(["sassBuild"]);
+    return runSequence(["sassBuild", "jadeBuild"]);
 
 });
 
@@ -82,6 +82,13 @@ gulp.task("webPack", function(done) {
     return gulp.src("./js")
         .pipe(run("webpack"));
 })
+
+gulp.task('jadeBuild', function() {
+    gulp.src('app/**/*.jade')
+        .pipe(jadeBuild({}))
+        .pipe(flatten()) // remove dir
+        .pipe(gulp.dest('template'));
+});
 
 
 gulp.task("cleanApp", function(done) {
