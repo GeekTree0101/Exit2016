@@ -4,7 +4,7 @@
     "scripts": {
         "tsc": "tsc",
         "tsc:w": "tsc -w",
-        "application": "gulp AV:start"
+        "start": "gulp AV:start"
     },
     "licenses": [{
         "type": "MIT",

@@ -35068,30 +35068,73 @@
 	var core_1 = __webpack_require__(3);
 	var AppComponent = (function () {
 	    function AppComponent() {
+	        this.insert_data = "";
 	        this.title_state = {
-	            title: "ChatYa!",
+	            title: "ChatChat",
 	            hide: false
 	        };
-	        this.show_up_chet_panel = true;
 	    }
-	    AppComponent.prototype.ngAfterContentInit = function () {
-	        var eb = new window.EventBus('/eventbus/');
-	        window.eb = eb; //debug
-	        eb.onopen = function () {
-	            console.log("[+] opened");
-	            eb.registerHandler("main.client", function (err, msg) {
-	                console.log("[+] recv : " + msg.body);
-	            });
-	            setInterval(function () {
-	                eb.publish("main.server", "hello?");
-	            }, 2000);
-	        };
-	    };
-	    AppComponent.prototype.visit_room = function () {
+	    AppComponent.prototype.start = function () {
+	        console.log("[+] make room");
 	        this.user = window.prompt("Insert your ID");
 	        this.room = window.prompt("Insert room name");
-	        this.title_state.hide = true;
-	        this.show_up_chet_panel = false;
+	        if (this.user == null || this.room == null) {
+	            alert("다시입력해주세요.");
+	        }
+	        else if (this.user.length < 2 || this.room.length < 2) {
+	            alert("다시입력해주세요.");
+	        }
+	        else {
+	            this.title_state.hide = true;
+	            this.title_state.title = "Welcome " + this.user + ", room : " + this.room;
+	            this.connection();
+	        }
+	    };
+	    AppComponent.prototype.connection = function () {
+	        var user_name = this.user;
+	        window.eb = new window.EventBus('/eventbus/');
+	        window.eb.onopen = function () {
+	            console.log("[+] opened");
+	            window.eb.registerHandler("main.client", function (err, msg) {
+	                console.log("[+] recv : ", msg.body);
+	                if (msg.body.name != user_name) {
+	                    console.log(msg.body.name);
+	                    console.log(user_name);
+	                    var dom = document.createElement("div");
+	                    dom.className = "friend";
+	                    dom.innerHTML = "<label>" + msg.body.name + "</label>" +
+	                        "<p>" + msg.body.message + "</p>";
+	                    var select = document.getElementsByClassName("chetarea");
+	                    select[0].appendChild(dom);
+	                    document.scrollingElement.scrollTop = 999999999;
+	                }
+	            });
+	        };
+	    };
+	    AppComponent.prototype.exit_room = function () {
+	        console.log("[+] exit room");
+	        window.eb.close = function () {
+	            console.log("[+] close success");
+	        };
+	        this.title_state.hide = false;
+	        this.title_state.title = "ChatChat";
+	    };
+	    AppComponent.prototype.text = function (event) {
+	        this.insert_data = event.target.value;
+	    };
+	    AppComponent.prototype.send_message = function () {
+	        console.log("[+] send message : ", this.insert_data);
+	        var dom = document.createElement("div");
+	        dom.className = "me";
+	        dom.innerHTML = "<label>" + this.user + "</label>" +
+	            "<p>" + this.insert_data + "</p>";
+	        var select = document.getElementsByClassName("chetarea");
+	        select[0].appendChild(dom);
+	        document.scrollingElement.scrollTop = 999999999;
+	        window.eb.publish("main.server", {
+	            name: this.user,
+	            message: this.insert_data
+	        });
 	    };
 	    AppComponent = __decorate([
 	        core_1.Component({

@@ -1,3 +1,5 @@
+package AngularJS;
+
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.ext.web.Router;
@@ -13,52 +15,33 @@ import java.util.Date;
 
 import java.io.*;
 import java.util.*;
+import AngularJS.route.*;
 
 public class server extends AbstractVerticle{
 
     String IP_address = "192.168.1.9";
     int Port_number = 8000;
 
+    socket_server SocketRoute;
+
+
     public void start(){
 
         System.out.println("[+] AngularJS test server");
 
-        //Create Router
-        Router router = Router.router(vertx);
-
-        /*
-        *  Setting Server
-        *
-        */
         BridgeOptions opts = new BridgeOptions()
           .addInboundPermitted(new PermittedOptions().setAddress("main.server"))  
-          .addOutboundPermitted(new PermittedOptions().setAddress("main.client")); 
+          .addOutboundPermitted(new PermittedOptions().setAddressRegex("main.client")); 
        
         SockJSHandler ebHandler = SockJSHandler.create(vertx).bridge(opts); 
    
         EventBus eb = vertx.eventBus(); 
+        
+        //Create Router
+        Router router = Router.router(vertx);
        
-        /*
-        * Setting Router
-        * : /URL_NAME . append handler
-        */
         router.route("/main/*").handler(StaticHandler.create().setWebRoot("./www"));
-        router.route("/eventbus/*").handler(ebHandler);                          
-
-        /*
-        * Setting Socket
-        * [33 line] ref : Bridge option
-        */
-        eb.consumer("main.server").handler(message -> {       
-
-           String timestamp = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM)
-                                        .format(Date.from(Instant.now()));
-
-           System.out.println(": " + timestamp + " : " + message.body());
-
-           eb.publish("main.client", "OK! " + message.body()); 
-       });
-    
+        SocketRoute.socket_route(router, ebHandler, eb);
 
         // Create HTTP server
         vertx.createHttpServer().requestHandler(router::accept).listen(Port_number, IP_address);

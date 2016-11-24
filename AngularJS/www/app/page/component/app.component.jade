@@ -1,5 +1,14 @@
-header 
-    h2(class="title") ChatYa! 
-div(class="group") 
-    button(class="visit") Visit 
-    button(class="makeroom") Make
+header
+    h2(class="title") {{this.title_state.title}}
+div([hidden]="this.title_state.hide" class="group") 
+    button((click)="start()" class="visit") Visit 
+    button((click)="start()" class="makeroom") Make
+div([hidden]="!this.title_state.hide" class="group") 
+    button((click)="exit_room()" class="visit") Exit
+
+div([hidden]="!this.title_state.hide" class="chetarea")
+    
+div( [hidden]="!this.title_state.hide")           
+    input( (keyup)="text($event)" class="chet" placeholder="insert message" type="text")
+    button((click)="send_message()" class="send") send
+        
