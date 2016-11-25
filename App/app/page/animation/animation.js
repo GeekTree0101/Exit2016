@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { Text, View, Image , PanResponder} from "react-native";
+import { Text, View, Image , PanResponder, StyleSheet} from "react-native";
 import styles  from "./../../../android.style.js";
 
 export default class Animate extends Component{
@@ -56,13 +56,13 @@ export default class Animate extends Component{
             onMoveShouldSetResponder : () => true,
             onResponderGrant : () => {console.log("gestureHandlers start");},
             onResponderMove : (e) => {
+                
                 var evt = e.nativeEvent;
-                this.setState(
-                    {
+                
+                this.setState({
                         X : evt.pageX, 
                         Y : evt.pageY
-                    }
-                )
+                })
             },
             onResponderRelease : () => {
                 console.log("gestureHandlers stop");
@@ -74,21 +74,25 @@ export default class Animate extends Component{
         return(
             <View style={styles.AnimationView}>
                 <Image source={require("./img/react.png")}
-                       style={{
+                       style={[
+                            {
                                transform :[{translateX : this.state.X},
-                                           {translateY : this.state.Y}],
-                               width :100,
-                               height : 100
-                        }}
+                                           {translateY : this.state.Y}]
+                              
+                            },
+                               styles.AnimationImage
+                            ]}
                         {...this.gestureHandlers} //gestureHandlers
                 />
                 <Image source={require("./img/react.png")}
-                       style={{
+                       style={[
+                            {
                                transform :[{translateX : this.state.aX},
-                                           {translateY : this.state.aY}],
-                               width :100,
-                               height : 100
-                        }}
+                                           {translateY : this.state.aY}]
+                              
+                            },
+                               styles.AnimationImage
+                            ]}
                         {...this._PanResponder.panHandlers} //gestureHandlers
                 />                
             </View>
