@@ -1,0 +1,1 @@
+module.exports = require('react-native').StyleSheet.create({"homeView":{"backgroundColor":"#33e3ff"},"homeFont":{"color":"#fff"}});
