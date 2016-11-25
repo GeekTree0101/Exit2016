@@ -1,0 +1,31 @@
+#start {
+    color: #44A2FF;
+    font-size: 50px;
+    text-align: center;
+    animation-name: ani;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    opacity: 0.1;
+    margin-top: 20%;
+}
+
+h3 {
+    color: #999;
+    text-align: center;
+    animation-name: ani;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+    opacity: 0;
+}
+
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
