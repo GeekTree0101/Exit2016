@@ -17,8 +17,29 @@ h3 {
     animation-duration: 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+#view {
+    background-color: #44A2FF;
+    color: #eee;
+    width: 40%;
+    height: 5%;
+    font-weight: 700;
+    font-size: 2vmax;
+    border-width: 0px;
+    margin-top: 10%;
+    animation-name: ani;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
     animation-delay: 2s;
     opacity: 0;
+}
+
+#view:active {
+    opacity: 0.2;
 }
 
 @keyframes ani {

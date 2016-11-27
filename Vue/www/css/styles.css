@@ -1,31 +1,45 @@
 #start {
-    color: #44A2FF;
-    font-size: 50px;
-    text-align: center;
-    animation-name: ani;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    opacity: 0.1;
-    margin-top: 20%;
-}
+  color: #44A2FF;
+  font-size: 50px;
+  text-align: center;
+  animation-name: ani;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  opacity: 0.1;
+  margin-top: 10%; }
 
 h3 {
-    color: #999;
-    text-align: center;
-    animation-name: ani;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-delay: 2s;
-    opacity: 0;
-}
+  color: #999;
+  text-align: center;
+  animation-name: ani;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  opacity: 0; }
+
+#view {
+  background-color: #44A2FF;
+  color: #eee;
+  width: 40%;
+  height: 5%;
+  font-weight: 700;
+  font-size: 2vmax;
+  border-width: 0px;
+  margin-top: 10%;
+  animation-name: ani;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 2s;
+  opacity: 0; }
+
+#view:active {
+  opacity: 0.2; }
 
 @keyframes ani {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }

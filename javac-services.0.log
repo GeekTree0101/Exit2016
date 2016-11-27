@@ -681,3 +681,4 @@ org.javacs.NoJavaConfigException: Can't find configuration file for /home/hyeons
 	at org.javacs.Main.run(Main.java:150)
 	at org.javacs.Main.main(Main.java:69)
 
+INFO	?	main	2016-11-25T17:03:25.441Z	org.javacs.Main#run	Connection closed
