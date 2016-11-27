@@ -1,0 +1,70 @@
+.title {
+    color: #44A2FF;
+    font-size: 50px;
+    font-weight: 800;
+    text-align: center;
+    animation-name: ani;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    opacity: 0.1;
+    margin-top: 10%;
+}
+
+h3 {
+    color: #999;
+    text-align: center;
+    animation-name: ani;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+button {
+    background-color: #44A2FF;
+    color: #eee;
+    width: 10vmax;
+    height: 10vmax;
+    font-weight: 700;
+    font-size: 2vmax;
+    border-width: 0px;
+    margin-top: 5%;
+    opacity: 1;
+    border-radius: 100%;
+    outline: none;
+}
+
+button:hover {
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+button:active {
+    background-color: #4AAFFF;
+}
+
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0deg);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: rotateZ(360deg);
+        opacity: 1;
+    }
+}

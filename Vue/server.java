@@ -40,7 +40,7 @@ public class server extends AbstractVerticle{
         //Create Router
         Router router = Router.router(vertx);
        
-        router.route("/main/*").handler(StaticHandler.create().setWebRoot("./www"));
+        router.route().handler(StaticHandler.create().setWebRoot("./www"));
         SocketRoute.socket_route(router, ebHandler, eb);
 
         // Create HTTP server
