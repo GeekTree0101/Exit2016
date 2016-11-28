@@ -1,0 +1,28 @@
+mainView {
+    flex: 1;
+}
+
+homeView {
+    background-color: #33e3ff;
+    flex: 0.2;
+}
+
+homeFont {
+    color: #fff;
+    text-align: center;
+    font-size: 50%;
+    margin-top: 50%;
+}
+
+homeScroll {
+    background-color: #bbefff;
+    flex: 0.8;
+}
+
+homeScrollFont {
+    color: #999;
+    text-align: center;
+    font-size: 30%;
+    margin-top: 40%;
+    opacity: 0.8;
+}
