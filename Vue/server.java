@@ -40,7 +40,33 @@ public class server extends AbstractVerticle{
         //Create Router
         Router router = Router.router(vertx);
        
-        router.route().handler(StaticHandler.create().setWebRoot("./www"));
+        router.route("/home").handler(ctx -> {
+
+           ctx.response().sendFile("www/index.html"); 
+        });
+
+        router.route("/simple").handler(ctx -> {
+
+            ctx.response().sendFile("www/index.html");
+        });
+
+
+        router.route("/helloworld").handler(ctx -> {
+
+            ctx.response().sendFile("www/index.html");
+        });
+
+
+        router.route("/css/styles.css").handler(ctx -> {
+
+            ctx.response().sendFile("www/css/styles.css");
+        });
+
+        router.route("/js/app.bundle.js").handler(ctx -> {
+
+            ctx.response().sendFile("www/js/app.bundle.js");
+        });
+
         SocketRoute.socket_route(router, ebHandler, eb);
 
         // Create HTTP server
